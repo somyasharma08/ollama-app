@@ -150,26 +150,3 @@ The design of the SYSTEM prompt in the Modelfile follows a strict rule-based app
 
 If you encounter issues or want to improve the setup, feel free to submit a pull request or open an issue!
 
-
-
----
-
-## Screenshots
-
-### Interactive Mode Example
-
-![Interactive session screenshot](./screenshots/interactive_mode.png)
-
-### Docker Compose Setup
-
-![Docker compose up running](./screenshots/docker_compose_up.png)
-
----
-
-## Contact & Support
-
-For questions or issues, please open an issue on this repository.
-
----
-
-*This README was generated to document the custom LLaMA3 model setup using Ollama in Docker.*
