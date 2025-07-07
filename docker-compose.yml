@@ -1,0 +1,31 @@
+services:
+  ollama-server:
+    image: ollama/ollama:latest
+    container_name: ollama-server
+    ports:
+      - "11434:11434"
+    volumes:
+      - ./ollama/ollama:/root/.ollama
+      - ./docker/entrypoint.sh:/entrypoint.sh
+    pull_policy: always
+    restart: always
+    entrypoint: ["/usr/bin/bash", "/entrypoint.sh"]
+    tty: true
+    stdin_open: true
+
+  llama-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - ollama-server
+    tty: true
+    stdin_open: true
+    entrypoint: /app/entrypoint.sh
+    command: []
+    environment:
+      - OLLAMA_HOST=http://ollama-server:11434
+    volumes:
+      - ./Modelfile:/app/Modelfile
+      - ./test_ollama.py:/app/test_ollama.py
+      - ./docker/entrypoint.sh:/app/entrypoint.sh
